@@ -35,7 +35,6 @@
                                     this.closest('form').submit();">Log Out</a>
                              </li>
                          </form>
-
                      </ul>
                  </li>
              @else

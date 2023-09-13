@@ -1,15 +1,5 @@
-<x-app-layout>
-</x-app-layout>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-  <h1>this is admin dashboard</h1>
-</body>
-</html>
+    @include('admin.partials.head')
+    @include('admin.partials.sidebar')
+    @include('admin.partials.nav')
+    @include('admin.partials.main')
+    @include('admin.partials.footer')
