@@ -8,14 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function redirect(){
-        $role=Auth::user()->role;
-        if($role=='user'){
-          return view('user.home');
-        }else{
-            return view('admin.home');
-        }
-    }
     public function index(){
         $role = Auth::user()->role??"user";
         if ($role == 'admin') {

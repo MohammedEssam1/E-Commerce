@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
+        $categories = Category::get();
+        return view('admin.category.showCategory', compact('categories'));
     }
 
     /**
@@ -20,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category');
+        return view('admin.category.addCategory');
     }
 
     /**
@@ -28,26 +29,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $incomingFields =  $request->validate([
-            'title'=>'required|string|min:2|max:30|unique:categories,title|regex:/^[a-zA-Z]+[\w\s]{0,}$/'],
+        $incomingFields = $request->validate(
+            [
+                'title' => 'required|string|min:2|max:30|unique:categories,title|regex:/^[a-zA-Z]+[\w\s]{0,}$/'
+            ],
             [
                 'title.required' => 'The title field is required.',
                 'title.min' => 'The title must be at least 2 characters.',
                 'title.max' => 'The title cannot exceed 30 characters.',
                 'title.unique' => 'The title is already taken. Please choose a different one.',
                 'title.regex' => 'The title must contain only letters and spaces.',
-                ]
-            );
-      Category::create($incomingFields);
-        return redirect()->back()->with('message','Category added successfully');
+            ]
+        );
+        Category::create($incomingFields);
+        return redirect()->back()->with('message', 'Category added successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+
     }
 
     /**
@@ -55,7 +58,11 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::find($id);
+        if ($category == null) {
+            return redirect()->back();
+        }
+        return view('admin.category.updateCategory', compact('category'));
     }
 
     /**
@@ -63,7 +70,26 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $incomingFields = $request->validate(
+            [
+                'title' => 'required|string|min:2|max:30|unique:categories,title|regex:/^[a-zA-Z]+[\w\s]{0,}$/'
+            ],
+            [
+                'title.required' => 'The title field is required.',
+                'title.min' => 'The title must be at least 2 characters.',
+                'title.max' => 'The title cannot exceed 30 characters.',
+                'title.unique' => 'The title is already taken. Please choose a different one.',
+                'title.regex' => 'The title must contain only letters and spaces.',
+            ]
+        );
+        $category = Category::find($id);
+        if ($category == null) {
+            return redirect()->back();
+        }
+        $category->update([
+            'title' => $incomingFields['title'],
+        ]);
+        return redirect()->back()->with('message', 'Category updated successfully');
     }
 
     /**
@@ -71,6 +97,11 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+        if ($category == null) {
+            return redirect()->back();
+        }
+        $category->delete();
+        return redirect()->back();
     }
 }

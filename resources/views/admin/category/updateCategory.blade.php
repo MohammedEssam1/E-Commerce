@@ -8,15 +8,17 @@
              <div class="card col-lg-5 mx-auto">
 
                  <div class="card-body px-5 py-5">
-                     <h3 class="card-title text-left mb-3">Add Category</h3>
-                     <form method="POST" action="{{ route('category.store') }}">
+                     <h3 class="card-title text-left mb-3">Edit Category</h3>
+                     <form method="POST" action="{{ route('category.update', $category->id) }}">
                          @csrf
+                         @method('patch')
                          <div class="form-group">
                              <label>Title</label>
-                             <input type="text" name="title" class="form-control p_input text-light">
+                             <input value="{{ $category->title }}" type="text" name="title"
+                                 class="form-control p_input text-light">
                          </div>
                          <div class="text-center">
-                             <button type="submit" class="btn btn-primary btn-block enter-btn">Add</button>
+                             <button type="submit" class="btn btn-primary btn-block enter-btn">Update</button>
                          </div>
                      </form>
                      @if ($errors->any())
@@ -41,8 +43,6 @@
          <!-- content-wrapper ends -->
      </div>
      <!-- row ends -->
- </div>
- <!-- page-body-wrapper ends -->
  </div>
 
  @include('admin.partials.footer')
