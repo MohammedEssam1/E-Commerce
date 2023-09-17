@@ -1,12 +1,9 @@
  <!-- footer start -->
-      <footer>
+      <footer class="px-20" >
          <div class="container">
             <div class="row">
                <div class="col-md-4">
                    <div class="full">
-                      <div class="logo_footer">
-                        <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
-                      </div>
                       <div class="information_f">
                         <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
                         <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
@@ -71,10 +68,7 @@
       </footer>
       <!-- footer end -->
       <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
-
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-
+         <p class="mx-auto">© 2023 All Rights Reserved<br>
          </p>
       </div>
       <!-- jQery -->

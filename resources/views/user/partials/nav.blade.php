@@ -1,63 +1,66 @@
- <nav class="navbar navbar-expand-lg custom_nav-container ">
-     <a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class=""> </span>
-     </button>
-     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav">
-             <li class="nav-item active">
-                 <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="#product">Products</a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="blog_list.html">Blog</a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="contact.html">Contact</a>
-             </li>
+
+
+ <nav class="w-11/12 mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+     <div class="flex lg:flex-1">
+         <a href="#" class="-m-1.5 p-1.5">
+             <span class="sr-only">Your Company</span>
+             <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                 alt="">
+         </a>
+     </div>
+     <div class="flex lg:hidden">
+         <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+             <span class="sr-only">Open main menu</span>
+             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 aria-hidden="true">
+                 <path stroke-linecap="round" stroke-linejoin="round"
+                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+             </svg>
+         </button>
+     </div>
+     <div class="hidden lg:flex lg:gap-x-12">
+         <a href="/" class="text-sm font-semibold leading-6 text-gray-900">Home</a>
+         <a href="#products" class="text-sm font-semibold leading-6 text-gray-900">Products</a>
+         <a href="/" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
+         <a href="#subscribe" class="text-sm font-semibold leading-6 text-gray-900">subscribe</a>
+     </div>
+     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+         <a class="me-8 pt-2" href="{{route('cart.index')}}">
+             <i class="fa-solid fa-cart-shopping"></i>
+         </a>
              @auth
-                 {{-- <li class="nav-item">
-                     <a class="nav-link" href="{{ url('/redirect') }}">Dashboard</a>
-                 </li> --}}
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                         aria-haspopup="true" aria-expanded="true"> <span class="nav-label">{{ Auth::user()->name }} <span
-                                 class="caret"></span></a>
-                     <ul class="dropdown-menu">
-                         <li><a href="{{route('profile.edit')}}">Profile</a></li>
-                         <form method="POST" action="{{ route('logout') }}">
-                             @csrf
-                             <li><a href="route('logout')"
-                                     onclick="event.preventDefault();
-                                    this.closest('form').submit();">Log Out</a>
-                             </li>
-                         </form>
-                     </ul>
-                 </li>
+             <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                        <div class="navbar-profile">
+                            <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
+                            <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                        aria-labelledby="profileDropdown">
+                        <a href="{{route('profile.edit')}}" class="dropdown-item preview-item">
+                            <div class="preview-item-content">
+                                <p class="preview-subject mb-1">Profile</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+
+                     <form method="POST" action="{{ route('logout') }}">
+                     @csrf
+                        <a  href="{{route('logout')}}" onclick="event.preventDefault();
+                                this.closest('form').submit();" class="dropdown-item preview-item">
+                            <div class="preview-item-content">
+                                <p class="preview-subject mb-1">Log out</p>
+                            </div>
+                        </a>
+                    </form>
+                    </div>
+                </li>
+            </ul>
              @else
-                 <li class="nav-item">
-                     <a class="nav-link" href="{{ route('login') }}">Login</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="{{ route('register') }}">Register</a>
-                 </li>
+         <a  href="{{ route('login') }}" class="pt-2 text-lg font-semibold leading-6 text-gray-900">Log in <span
+                 aria-hidden="true">&rarr;</span></a>
              @endauth
-             <li class="nav-item">
-                 <a class="nav-link" href="#">
-                     <i class="fa-solid fa-cart-shopping"></i>
-                 </a>
-             </li>
-             <form class="form-inline">
-                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                     <i class="fa fa-search" aria-hidden="true"></i>
-                 </button>
-             </form>
-         </ul>
      </div>
  </nav>
- </div>
- </header>
- <!-- end header section -->

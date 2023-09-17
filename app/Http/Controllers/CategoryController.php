@@ -31,7 +31,7 @@ class CategoryController extends Controller
     {
         $incomingFields = $request->validate(
             [
-                'title' => 'required|string|min:2|max:30|unique:categories,title|regex:/^[a-zA-Z]+[\w\s]{0,}$/'
+                'title' => 'required|string|min:2|max:30|unique:categories,title|regex:/^[a-zA-Z]+[\w\s-]{0,}$/'
             ],
             [
                 'title.required' => 'The title field is required.',
@@ -72,7 +72,7 @@ class CategoryController extends Controller
     {
         $incomingFields = $request->validate(
             [
-                'title' => 'required|string|min:2|max:30|unique:categories,title|regex:/^[a-zA-Z]+[\w\s]{0,}$/'
+                'title' => 'required|string|min:2|max:30|regex:/^[a-zA-Z]+[\w\s-]{0,}$/'
             ],
             [
                 'title.required' => 'The title field is required.',

@@ -11,7 +11,7 @@ body {
 }
 
 .layout_padding {
-  padding: 70px 0;
+  padding: 50px 0;
 }
 
 .layout_padding2 {
@@ -1119,8 +1119,24 @@ form input[type="submit"]:focus {
     font-size: 15px;
     font-weight: 400;
 }
+  #logo {
+      font-size: 30px;
+      color: black;
+      font-weight: 700;
+  }
 
-http://kute-themes.com/html/boutique/html/index.html
-https://template.hasthemes.com/noraure/noraure/index.html
-https://preview.hasthemes.com/xoss-preview/xoss/index.html
+.animated-text {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 2s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 

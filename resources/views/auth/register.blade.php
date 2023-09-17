@@ -1,4 +1,10 @@
 <x-guest-layout>
+    <div>
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 class="mt-4 mb-6 text-center text-3xl font-extrabold font-mono leading-9 tracking-tight text-gray-900">
+                Join Us Today</h2>
+        </div>
+    </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -54,15 +60,15 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+    <p class="mt-5 text-center text-sm text-gray-500">
+        Have an account already?
+        <a href="{{ route('login') }}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"> Sign
+            in</a>
+    </p>
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
+            <button type="submit"
+                class="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
         </div>
+
     </form>
 </x-guest-layout>
